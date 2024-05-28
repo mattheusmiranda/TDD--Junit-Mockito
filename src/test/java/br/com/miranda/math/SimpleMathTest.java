@@ -3,22 +3,48 @@ package br.com.miranda.math;
 import br.com.miranda.SimpleMath;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 @DisplayName("Test Math Operations in SimpleMath Class")
 class SimpleMathTest {
 
-    // test(Sustem Under Test)_(Condition or State Change)_(Expected Result)
+    SimpleMath math;
+
+    @BeforeAll
+    static void setup() {
+        System.out.println("Running @BeforeAll method!");
+    }
+
+    @BeforeEach
+    void beforeEachMethod() {
+        math = new SimpleMath();
+    }
+
+    @AfterEach
+    void afterEachMethod() {
+        System.out.println("Running @AfterEach method!");
+    }
+
+    @AfterAll
+    static void cleanup() {
+        System.out.println("Running @AfterAll method!");
+    }
+
     @Test
     @DisplayName("Test 6.2 + 2 = 8.2")
     void testSum() {
-        SimpleMath math = new SimpleMath();
+
+        // AAA
+
+        // Given - Arange
         double firstNumber = 6.2;
         double secondNumber = 2D;
-        Double actual = math.sum(firstNumber, secondNumber);
         double expected = 8.2D;
 
+        // When - Act
+        Double actual = math.sum(firstNumber, secondNumber);
+
+        // Then - Assert
         assertEquals(expected, actual, () -> firstNumber + "+" + secondNumber + " did not produce " + expected);
         assertNotEquals(9.2, actual);
         assertNotNull(actual);
@@ -27,7 +53,6 @@ class SimpleMathTest {
     @Test
     @DisplayName("Test 10.0 - 2.0 = 8.0")
     void testSubtraction() {
-        SimpleMath math = new SimpleMath();
         Double firstNumber = 10.0;
         Double secondNumber = 2.0;
         Double actual = math.subtraction(firstNumber, secondNumber);
@@ -40,7 +65,6 @@ class SimpleMathTest {
     @Test
     @DisplayName("Test 2.0 * 3.0 = 6.0")
     void testMultiplication() {
-        SimpleMath math = new SimpleMath();
         Double firstNumber = 2.0;
         Double secondNumber = 3.0;
         Double actual = math.multiplication(firstNumber, secondNumber);
@@ -53,7 +77,6 @@ class SimpleMathTest {
     @Test
     @DisplayName("Test 10.0 / 2.0 = 5.0")
     void testDivision() {
-        SimpleMath math = new SimpleMath();
         Double firstNumber = 10.0;
         Double secondNumber = 2.0;
         Double actual = math.division(firstNumber, secondNumber);
@@ -66,7 +89,6 @@ class SimpleMathTest {
     @Test
     @DisplayName("Test Mean of 10.0 and 2.0 = 6.0")
     void testMean() {
-        SimpleMath math = new SimpleMath();
         Double firstNumber = 10.0;
         Double secondNumber = 2.0;
         Double actual = math.mean(firstNumber, secondNumber);
@@ -79,7 +101,6 @@ class SimpleMathTest {
     @Test
     @DisplayName("Test Square Root of 49.0 = 7.0")
     void testSquareRoot() {
-        SimpleMath math = new SimpleMath();
         Double numberParam = 49.0;
         Double actual = math.squareRoot(numberParam);
         double expected = 7.0;
@@ -87,5 +108,4 @@ class SimpleMathTest {
         assertEquals(expected, actual, () -> "square root of " + numberParam + " did not produce " + expected);
         assertNotNull(actual);
     }
-
 }
